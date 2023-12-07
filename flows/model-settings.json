@@ -1,0 +1,7 @@
+{
+    "name": "wine-classifier",
+    "implementation": "mlserver_mlflow.MLflowRuntime",
+    "parameters": {
+        "uri": "{model_path}"
+    }
+}
