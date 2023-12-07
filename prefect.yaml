@@ -6,9 +6,9 @@ deployments:
 - name: tests
   schedule:
 #  entrypoint: flows/hello.py:hello
-  entrypoint: flows/modelserve.py:DeployModel
+  entrypoint: flows/modelserve.py:example_shell_run_command_flow
   work_pool:
-    name: test-kube
+    name: minikube
     work_queue_name:
     job_variables: {}
     image: docker.io/prefecthq/prefect:2-latest
@@ -21,8 +21,8 @@ deployments:
       directory: /opt/prefect
   - prefect.deployments.steps.git_clone:
      id: clone-step
-     repository: https://github.com/ErinElizabethSeder/Seldon-deploy.git
-#  - prefect.deployments.steps.pip_install_requirements:
-#     directory: "{{ clone-step.directory }}/flows"
-#     requirements_file: requirements.txt
-#     stream_output: False
+     repository: https://github.com/ErinElizabethSeder/MLdepoy.git
+  - prefect.deployments.steps.pip_install_requirements:
+     directory: "{{ clone-step.directory }}/flows"
+     requirements_file: requirements.txt
+     stream_output: False
